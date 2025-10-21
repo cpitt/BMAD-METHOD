@@ -18,6 +18,12 @@ platforms:
     category: cli
     description: "Anthropic's official CLI for Claude"
 
+  opencode:
+    name: "OpenCode"
+    preferred: true
+    category: cli
+    description: "AI terminal coding agent"
+
   windsurf:
     name: "Windsurf"
     preferred: true

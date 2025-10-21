@@ -130,22 +130,23 @@ The installer supports **14 IDE environments** through a base-derived architectu
 
 **Supported IDEs** (as of v6-alpha):
 
-| Code             | Name              | Artifact Location      |
-| ---------------- | ----------------- | ---------------------- |
-| `codex`          | Claude Code       | `.claude/commands/`    |
-| `claude-code`    | Claude Code (alt) | `.claude/commands/`    |
-| `windsurf`       | Windsurf          | `.windsurf/workflows/` |
-| `cursor`         | Cursor            | `.cursor/rules/`       |
-| `cline`          | Cline             | `.clinerules/`         |
-| `github-copilot` | GitHub Copilot    | `.github/copilot/`     |
-| `crush`          | Crush             | `.crush/`              |
-| `auggie`         | Auggie            | `.auggie/`             |
-| `gemini`         | Google Gemini     | `.gemini/`             |
-| `qwen`           | Qwen              | `.qwen/`               |
-| `roo`            | Roo               | `.roo/`                |
-| `trae`           | Trae              | `.trae/`               |
-| `iflow`          | iFlow             | `.iflow/`              |
-| `kilo`           | Kilo              | `.kilo/`               |
+| Code             | Name           | Artifact Location      |
+| ---------------- | -------------- | ---------------------- |
+| `claude-code`    | Claude Code    | `.claude/commands/`    |
+| `opencode`       | OpenCode       | `.opencode/agents/`    |
+| `windsurf`       | Windsurf       | `.windsurf/workflows/` |
+| `cursor`         | Cursor         | `.cursor/rules/`       |
+| `cline`          | Cline          | `.clinerules/`         |
+| `github-copilot` | GitHub Copilot | `.github/copilot/`     |
+| `crush`          | Crush          | `.crush/`              |
+| `auggie`         | Auggie         | `.auggie/`             |
+| `gemini`         | Google Gemini  | `.gemini/`             |
+| `qwen`           | Qwen           | `.qwen/`               |
+| `roo`            | Roo            | `.roo/`                |
+| `trae`           | Trae           | `.trae/`               |
+| `iflow`          | iFlow          | `.iflow/`              |
+| `kilo`           | Kilo           | `.kilo/`               |
+| `codex`          | Codex          | `~/.codex/prompts/`    |
 
 **Handler Architecture**:
 
