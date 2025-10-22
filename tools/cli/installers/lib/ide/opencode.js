@@ -73,7 +73,7 @@ class OpenCodeSetup extends BaseIdeSetup {
 
     let config = {
       $schema: 'https://opencode.ai/config.json',
-      instructions: ['{project-root}/bmad/core/config.yaml', '.opencode/agent/*.md'],
+      instructions: ['{project-root}/bmad/core/config.yaml'],
     };
 
     if (await fs.pathExists(configPath)) {
