@@ -16,8 +16,8 @@ Select OpenCode during the **Tool Integration** step.
 
 The installer will create:
 
-- **`.opencode/agents/`** - All BMAD agents as markdown files
-- **`.opencode/commands/`** - Workflow command templates
+- **`.opencode/agent/`** - All BMAD agents as markdown files
+- **`.opencode/command/`** - Workflow command templates
 - **`.opencode/opencode.jsonc`** - OpenCode configuration with instructions pointing to BMAD resources
 
 ## Using BMAD with OpenCode
@@ -31,10 +31,10 @@ opencode
 
 ### 2. Access BMAD Agents and Commands
 
-OpenCode will load the BMAD agents and make them available through the `.opencode/agents/` directory. You can reference them directly in prompts:
+OpenCode will load the BMAD agents and make them available through the `.opencode/agent/` directory. You can reference them directly in prompts:
 
 ```
-@.opencode/agents/bmad-master
+@.opencode/agent/bmad-master
 ```
 
 Or use workflow commands if they're exposed through your configuration:
@@ -48,7 +48,7 @@ Or use workflow commands if they're exposed through your configuration:
 Your `opencode.jsonc` includes instructions that point to:
 
 - **Core configuration**: `{project-root}/bmad/core/config.yaml`
-- **Agents directory**: `.opencode/agents/`
+- **Agents directory**: `.opencode/agent/`
 
 These are automatically loaded when OpenCode starts.
 
@@ -61,7 +61,7 @@ If you need to customize your `opencode.jsonc`, edit `.opencode/opencode.jsonc`:
 ```jsonc
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": ["{project-root}/bmad/core/config.yaml", ".opencode/agents/*.md"],
+  "instructions": ["{project-root}/bmad/core/config.yaml", ".opencode/agent/*.md"],
   // Add your own custom configuration here
   "model": "anthropic/claude-sonnet-4-20250514",
 }
@@ -69,7 +69,7 @@ If you need to customize your `opencode.jsonc`, edit `.opencode/opencode.jsonc`:
 
 ### Adding Custom Commands
 
-Create command files in `.opencode/commands/` or define them in `opencode.jsonc`:
+Create command files in `.opencode/command/` or define them in `opencode.jsonc`:
 
 ```jsonc
 {
@@ -89,20 +89,20 @@ To use a BMAD agent in OpenCode:
 1. Use the `@` symbol to reference agent files:
 
    ```
-   @.opencode/agents/agent-name
+   @.opencode/agent/agent-name
    ```
 
 2. Or reference through the file directly:
 
    ```
-   Check this agent: @.opencode/agents/bmad-master
+   Check this agent: @.opencode/agent/bmad-master
    ```
 
 3. OpenCode will load the agent's persona and instructions automatically.
 
 ## Using Workflow Commands
 
-If workflows were exported as commands in `.opencode/commands/`:
+If workflows were exported as commands in `.opencode/command/`:
 
 ```
 /module-workflow-name
@@ -112,7 +112,7 @@ OpenCode will execute the workflow command template.
 
 ## Tips
 
-- **Keep `.opencode/` in Git**: Commit `.opencode/opencode.jsonc` and `.opencode/agents/` to share with your team
+- **Keep `.opencode/` in Git**: Commit `.opencode/opencode.jsonc` and `.opencode/agent/` to share with your team
 - **Project-specific setup**: Each project gets its own `.opencode/` directory, so different projects can have different configurations
 - **Run the compiler**: When BMAD is updated, run the compiler to regenerate agents:
   ```bash
@@ -126,7 +126,7 @@ OpenCode will execute the workflow command template.
 
 Make sure:
 
-1. `.opencode/agents/` exists and contains `.md` files
+1. `.opencode/agent/` exists and contains `.md` files
 2. Your `opencode.jsonc` has the correct `instructions` path
 3. You're in the project root when starting OpenCode
 

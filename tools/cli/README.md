@@ -133,7 +133,7 @@ The installer supports **14 IDE environments** through a base-derived architectu
 | Code             | Name           | Artifact Location      |
 | ---------------- | -------------- | ---------------------- |
 | `claude-code`    | Claude Code    | `.claude/commands/`    |
-| `opencode`       | OpenCode       | `.opencode/agents/`    |
+| `opencode`       | OpenCode       | `.opencode/agent/`    |
 | `windsurf`       | Windsurf       | `.windsurf/workflows/` |
 | `cursor`         | Cursor         | `.cursor/rules/`       |
 | `cline`          | Cline          | `.clinerules/`         |

@@ -9,8 +9,8 @@ class OpenCodeSetup extends BaseIdeSetup {
   constructor() {
     super('opencode', 'OpenCode', true);
     this.configDir = '.opencode';
-    this.agentsDir = 'agents';
-    this.commandsDir = 'commands';
+    this.agentDir = 'agent';
+    this.commandDir = 'command';
   }
 
   async collectConfiguration(options = {}) {
@@ -24,18 +24,18 @@ class OpenCodeSetup extends BaseIdeSetup {
     console.log(chalk.cyan(`Setting up ${this.name}...`));
 
     const openCodeDir = path.join(projectDir, this.configDir);
-    const agentsPath = path.join(openCodeDir, this.agentsDir);
-    const commandsPath = path.join(openCodeDir, this.commandsDir);
+    const agentPath = path.join(openCodeDir, this.agentDir);
+    const commandPath = path.join(openCodeDir, this.commandDir);
 
-    await this.ensureDir(agentsPath);
-    await this.ensureDir(commandsPath);
+    await this.ensureDir(agentPath);
+    await this.ensureDir(commandPath);
 
     const agents = await getAgentsFromBmad(bmadDir, options.selectedModules || []);
 
     let agentCount = 0;
     for (const agent of agents) {
       const content = await fs.readFile(agent.path, 'utf8');
-      const targetPath = path.join(agentsPath, `${agent.name}.md`);
+      const targetPath = path.join(agentPath, `${agent.name}.md`);
       await fs.writeFile(targetPath, content, 'utf8');
       agentCount++;
     }
@@ -47,8 +47,8 @@ class OpenCodeSetup extends BaseIdeSetup {
     if (workflows && workflows.length > 0) {
       for (const workflow of workflows) {
         const commandContent = await workflowGen.generateCommandContent(workflow, bmadDir);
-        const commandPath = path.join(commandsPath, `${workflow.module}-${workflow.name}.md`);
-        await fs.writeFile(commandPath, commandContent, 'utf8');
+        const cmdPath = path.join(commandPath, `${workflow.module}-${workflow.name}.md`);
+        await fs.writeFile(cmdPath, commandContent, 'utf8');
         workflowCount++;
       }
     }
@@ -73,7 +73,7 @@ class OpenCodeSetup extends BaseIdeSetup {
 
     let config = {
       $schema: 'https://opencode.ai/config.json',
-      instructions: ['{project-root}/bmad/core/config.yaml', '.opencode/agents/*.md'],
+      instructions: ['{project-root}/bmad/core/config.yaml', '.opencode/agent/*.md'],
     };
 
     if (await fs.pathExists(configPath)) {
